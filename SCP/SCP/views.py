@@ -6,7 +6,7 @@ def homepage(request, *args, **kwargs):
    # return HttpResponse("Hello World")
    member.objects.create()
    queryset = member.objects.all()
-   my_title = "Swim Club matey"
+   my_title = "Swim Club PAL"
    my_context = {
        
        "page_title": my_title,
