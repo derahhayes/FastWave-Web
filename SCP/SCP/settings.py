@@ -151,17 +151,31 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATICFILES_BASE_DIR = BASE_DIR / "staticfiles"
+
+STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR / "vendors"
+
+#source for python manage.py collecticstatic
+
+
+
 STATICFILES_DIRS = [
 
-    os.path.join(BASE_DIR, 'static')
-]
+    STATICFILES_BASE_DIR   
 
-MEDIA_URL = 'images/'
+   ]
 
-MEDIAFILES_DIRS = [
+#output for our pyuthon manage.poy collectistatic
+# local cdn
+STATIC_ROOT = BASE_DIR.parent / "local-cdn" 
 
-    os.path.join(BASE_DIR, 'static/images')
-]
+
+#MEDIA_URL = 'images/'
+
+#MEDIAFILES_DIRS = [
+
+#    os.path.join(BASE_DIR, 'static/images')
+#]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
