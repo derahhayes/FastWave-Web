@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'django_bootstrap5',
     #dermots apps 
     'members',
+    'commando',
     ]
 
 MIDDLEWARE = [
@@ -155,9 +156,8 @@ STATICFILES_BASE_DIR = BASE_DIR / "staticfiles"
 
 STATICFILES_VENDOR_DIR = STATICFILES_BASE_DIR / "vendors"
 
+
 #source for python manage.py collecticstatic
-
-
 
 STATICFILES_DIRS = [
 
