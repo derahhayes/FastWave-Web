@@ -54,7 +54,7 @@ ENV DJANGO_DEBUG=${DJANGO_DEBUG}
 # such as:
 RUN python manage.py vendor_pull_static
 RUN python manage.py collectstatic --noinput
-#whitenoise -> s3
+#RUN whitenoise
 
 # set the Django default project name
 ARG PROJ_NAME="SCP"
