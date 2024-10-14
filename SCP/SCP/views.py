@@ -4,6 +4,9 @@ from members.models import member
 
 def homepage(request, *args, **kwargs):
    # return HttpResponse("Hello World")
+   if request.user.is_authenticated:
+      print( request.user.first_name)
+   
    member.objects.create()
    queryset = member.objects.all()
    my_title = "Swim Club PAL"

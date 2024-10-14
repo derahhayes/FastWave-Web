@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form method="POST" action="/register/"> 
+
+{% csrf_token %}
+
+    <input type="test" name="username" placeholder="username"/>
+    
+    <input type="test" name="email" placeholder="Your email"/>
+    <input type="test" name="password" placeholder="Your password"/>
+
+    <button type="submit">Register</button> 
+
+</form>
+{%endblock content%}
