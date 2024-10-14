@@ -103,7 +103,7 @@ DATABASES = {
 
 
 CONN_MAX_AGE = config("CONN_MAX_AGE", cast=int, default=30)
-DATABASE_URL = config("DATABASE_URL", cast=str)
+DATABASE_URL = config("DATABASE_URL", default=None)
 
 
 if DATABASE_URL is not None:
@@ -111,10 +111,6 @@ if DATABASE_URL is not None:
     DATABASES = {
         'default': dj_database_url.config(default=DATABASE_URL, conn_max_age=CONN_MAX_AGE,conn_health_checks=True)
     }
-
- 
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
