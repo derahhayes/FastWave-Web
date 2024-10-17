@@ -9,7 +9,7 @@ def homepage(request, *args, **kwargs):
    
    member.objects.create()
    queryset = member.objects.all()
-   my_title = "Swim Club PAL"
+   my_title = "SCP - Swim Club Partner"
    my_context = {
        
        "page_title": my_title,

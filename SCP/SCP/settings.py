@@ -73,6 +73,13 @@ INSTALLED_APPS = [
     #dermots apps 
     'members',
     'commando',
+    #hird-part aps
+    "allauth_ui",
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount.providers.google',
+    "widget_tweaks",
+    "slippers",
     ]
 
 MIDDLEWARE = [
@@ -83,8 +90,16 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+     #all auth middleware
+     "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+SOCIALACCOUNT_PROVIDERS = {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+}
 
 ROOT_URLCONF = 'SCP.urls'
 
@@ -95,10 +110,14 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
+                
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                #allauth
+                'django.template.context_processors.request',
+
             ],
         },
     },
@@ -144,6 +163,22 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+]
+
+#all auth 
+LOGIN_REDIRECT_URL= "/"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email" 
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "SCP- Swim Club Partner : "
+ACCOUNT_EMAIL_REQUIRED=True
+
+
+
+AUTHENTICATION_BACKENDS = [
+       # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 
@@ -193,7 +228,9 @@ STORAGES = {
 
 #MEDIAFILES_DIRS = [
 
-#    os.path.join(BASE_DIR, 'static/images')
+ #   STATICFILES_IMAGES_DIR = STATICFILES_BASE_DIR / "images"
+
+#   os.path.join(BASE_DIR, 'static/images')
 #]
 
 # Default primary key field type
