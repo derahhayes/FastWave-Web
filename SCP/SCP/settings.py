@@ -69,7 +69,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_bootstrap5',
+   # 'django_bootstrap5',
     #dermots apps 
     'members',
     'commando',
