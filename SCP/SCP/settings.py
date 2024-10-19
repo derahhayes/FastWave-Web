@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     "allauth_ui",
     'allauth',
     'allauth.account',
+    'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     "widget_tweaks",
     "slippers",
@@ -96,9 +97,17 @@ MIDDLEWARE = [
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
+#    'google':[
+#         'APP': {
+#            'client_id': '<your-client-id>',
+#            'secret': '<your-client-secret>',
+#            'key': ''
+#         }
+#   ]
         # For each OAuth based provider, either add a ``SocialApp``
         # (``socialaccount`` app) containing the required client
         # credentials, or list them here:
+
 }
 
 ROOT_URLCONF = 'SCP.urls'
