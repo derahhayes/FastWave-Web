@@ -1,9 +1,12 @@
 #from django.http import HttpResponse
 from django.shortcuts import render
-from django.contrib
+from django.contrib.auth.decorators import login_required
 from members.models import member
+from django.admin import staff_required
 
 
+
+@login_required
 def homepage(request, *args, **kwargs):
    # return HttpResponse("Hello World")
    if request.user.is_authenticated:

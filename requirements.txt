@@ -13,3 +13,4 @@ django_allauth[socialaccount]
 django-allauth-ui
 django-widget-tweaks
 slippers
+stripe
