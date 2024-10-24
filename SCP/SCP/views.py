@@ -2,7 +2,7 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from members.models import member
-from django.admin import staff_required
+
 
 
 
@@ -39,6 +39,6 @@ def pw_protected_page(request, *args, **kwargs):
             return render(request, "protected/view.html")
          
 
-def user_only_view(request, *args, **kwargs):
-   if not request.user.is_authenticated:
-      return redirect("/login")
+#def user_only_view(request, *args, **kwargs):
+#   if not request.user.is_authenticated:
+#      return redirect("/login")
