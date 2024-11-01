@@ -69,9 +69,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-   # 'django_bootstrap5',
+    'django_bootstrap5',
     #dermots apps 
     'members',
+    'landing',
     'commando',
     #hird-part aps
     "allauth_ui",

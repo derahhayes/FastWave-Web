@@ -1,21 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-    
-    {% include "base/css.html" %}
+  <head>
+    {% include "base/js.html" %}
 
-    <title>{% block head_title %}SCP - Swim Club Partner{% endblock head_title %}</title>
+    <title>
+      {% block head_title %}SCP - Swim Club Partner{% endblock head_title %}
+    </title>
+  </head>
+  <body>
+    {%include "base/css.html" %} {% block content %} {% endblock content %}
 
-   
-</head>
-<body>
-           
-    {% include 'base/js.html' %}
-    {% include 'nav/sidebar.html' %}
-
-    {% block content %}
-
-    {% endblock content %}
-   
-</body>
+    <footer>{% block footer %} {% endblock footer %}</footer>
+  </body>
 </html>

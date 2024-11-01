@@ -11,14 +11,10 @@ def homepage(request, *args, **kwargs):
    # return HttpResponse("Hello World")
    if request.user.is_authenticated:
       print( request.user.first_name)
-   
-   member.objects.create()
-   queryset = member.objects.all()
    my_title = "SCP - Swim Club Partner"
    my_context = {
        
        "page_title": my_title,
-       "members_count": queryset.count()
        
    }
    return render(request, 'home.html', my_context)
