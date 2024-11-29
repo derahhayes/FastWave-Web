@@ -10,13 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-import os
+import environ, os
 from pathlib import Path
 from decouple import config
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+env = environ.Env(DEBUG=(bool, False))
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 #email config
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -55,12 +58,14 @@ if DEBUG:
     ALLOWED_HOSTS += [
     "127.0.0.1",
     "localhost"
-
+    "localhost:5173"
+    ".railway.app"
     ]
 
 
 # Application definition
 
+# noinspection PyInterpreter
 INSTALLED_APPS = [
     #django apps
     'django.contrib.admin',
@@ -82,6 +87,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     "widget_tweaks",
     "slippers",
+    "rest_framework"
     ]
 
 MIDDLEWARE = [
@@ -96,6 +102,8 @@ MIDDLEWARE = [
      "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 SOCIALACCOUNT_PROVIDERS = {
 #    'google':[
@@ -179,7 +187,7 @@ AUTH_PASSWORD_VALIDATORS = [
 LOGIN_REDIRECT_URL= "/"
 ACCOUNT_AUTHENTICATION_METHOD = "username_email" 
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-ACCOUNT_EMAIL_SUBJECT_PREFIX = "SCP- Swim Club Partner : "
+ACCOUNT_EMAIL_SUBJECT_PREFIX = "FastWave: "
 ACCOUNT_EMAIL_REQUIRED=True
 
 
@@ -247,3 +255,11 @@ STORAGES = {
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "SCP.middlewares.JWTAuthenticationMiddleware",
+        "rest_framework.authentication.BasicAuthentication",
+        "rest_framework.authentication.SessionAuthentication",
+    ),
+}

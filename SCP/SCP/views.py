@@ -2,8 +2,8 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from members.models import member
-
-
+from django.contrib.auth.models import User
+from rest_framework import permissions, serializers, viewsets
 
 
 @login_required
@@ -11,7 +11,7 @@ def homepage(request, *args, **kwargs):
    # return HttpResponse("Hello World")
    if request.user.is_authenticated:
       print( request.user.first_name)
-   my_title = "SCP - Swim Club Partner"
+   my_title = "FastWave"
    my_context = {
        
        "page_title": my_title,
@@ -33,7 +33,20 @@ def pw_protected_page(request, *args, **kwargs):
          is_allowed = True
          if is_allowed:
             return render(request, "protected/view.html")
-         
+
+class UserSerializer(serializers.ModelSerializer):
+   class Meta:
+      model = User
+
+
+class UserViewSet(viewsets.ModelViewSet):
+   """
+   API endpoint that allows users to be viewed or edited.
+   """
+
+   queryset = User.objects.all().order_by("-date_joined")
+   serializer_class = UserSerializer
+   permission_classes = [permissions.IsAuthenticated]
 
 #def user_only_view(request, *args, **kwargs):
 #   if not request.user.is_authenticated:
