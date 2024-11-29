@@ -256,10 +256,10 @@ STORAGES = {
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
-        "SCP.middlewares.JWTAuthenticationMiddleware",
-        "rest_framework.authentication.BasicAuthentication",
-        "rest_framework.authentication.SessionAuthentication",
-    ),
-}
+#REST_FRAMEWORK = {
+#    "DEFAULT_AUTHENTICATION_CLASSES": (
+#        "SCP.middlewares.JWTAuthenticationMiddleware",
+#        "rest_framework.authentication.BasicAuthentication",
+#        "rest_framework.authentication.SessionAuthentication",
+#    ),
+#}
